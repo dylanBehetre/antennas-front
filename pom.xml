@@ -15,6 +15,8 @@
     <quarkus.platform.group-id>io.quarkus.platform</quarkus.platform.group-id>
     <quarkus.platform.version>2.8.2.Final</quarkus.platform.version>
     <surefire-plugin.version>3.0.0-M5</surefire-plugin.version>
+    <jkube.build.strategy>s2i</jkube.build.strategy>
+    <jkube.generator.name>quay.io/mtanguycap/hackathon</jkube.generator.name>
   </properties>
   <dependencyManagement>
     <dependencies>
@@ -28,6 +30,14 @@
     </dependencies>
   </dependencyManagement>
   <dependencies>
+    <dependency>
+      <groupId>io.quarkus</groupId>
+      <artifactId>quarkus-rest-client</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>io.quarkus</groupId>
+      <artifactId>quarkus-rest-client-jackson</artifactId>
+    </dependency>
     <dependency>
       <groupId>io.quarkus</groupId>
       <artifactId>quarkus-resteasy</artifactId>
@@ -73,6 +83,28 @@
   </dependencies>
   <build>
     <plugins>
+      <plugin>
+        <groupId>org.eclipse.jkube</groupId>
+        <artifactId>openshift-maven-plugin</artifactId>
+        <version>1.7.0</version>
+        <configuration>
+          <authConfig>
+            <username>mtanguycap</username>
+            <password>CK9tCDIRDhMv9gU13I10Zapn+NDmhD4H6mQizvrpChTctkKUB3Wis2GNy1IS/1UB</password>
+          </authConfig>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.eclipse.jkube</groupId>
+        <artifactId>kubernetes-maven-plugin</artifactId>
+        <version>1.7.0</version>
+        <configuration>
+          <authConfig>
+            <username>mtanguycap</username>
+            <password>CK9tCDIRDhMv9gU13I10Zapn+NDmhD4H6mQizvrpChTctkKUB3Wis2GNy1IS/1UB</password>
+          </authConfig>
+        </configuration>
+      </plugin>
       <plugin>
         <groupId>${quarkus.platform.group-id}</groupId>
         <artifactId>quarkus-maven-plugin</artifactId>
