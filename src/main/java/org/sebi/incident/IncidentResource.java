@@ -14,8 +14,16 @@ public class IncidentResource {
 
     @GET()
     @Path("incidents")
+    @Fallback(fallbackMethod = "fallbackGetIncidents")
     public List<Incident> getIncidents() {
         return incidentRestClient.getIncidents(apiKey);
+    }
+    
+    public List<Incident> fallbackGetIncidents() {
+        return List.of(
+            new Incident().setDate(new Date())
+                       .setDescription("fallback")
+                       .setStatus(false));
     }
 }
 
