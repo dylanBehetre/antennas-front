@@ -8,8 +8,9 @@ import javax.ws.rs.QueryParam;
 import java.util.List;
 
 @RegisterRestClient(configKey="incident-api")
+@Path("rest")
 public interface IncidentRestService {
     @GET
     @Path("/incidents")
-    List<Incident> getIncidents(@QueryParam("APIKEY") String apiKey);
+    List<Incident> getIncidents(@QueryParam("api_key") String apiKey);
 }

@@ -10,7 +10,7 @@ import java.util.List;
 @Path("rest")
 public class IncidentResource {
     @RestClient IncidentRestService incidentRestClient;
-    @ConfigProperty(name = "APIKEY", defaultValue = "secret") String apiKey;
+    @ConfigProperty(name = "APIKEY", defaultValue = "PaasHat") String apiKey;
 
     @GET()
     @Path("incidents")
